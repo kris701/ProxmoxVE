@@ -33,7 +33,7 @@ msg_ok "Application Configured"
 msg_info "Setting up FTP Server"
 useradd ftpuser
 FTP_PASS=$(openssl rand -base64 18 | tr -dc 'a-zA-Z0-9' | head -c13)
-usermod --password ${FTP_PASS} ftpuser
+usermod --password $(echo ${FTP_PASS} | openssl passwd -1 -stdin) ftpuser
 mkdir -p /var/www/html
 usermod -d /var/www/html ftp
 usermod -d /var/www/html ftpuser 
