@@ -11,7 +11,7 @@ verb_ip6
 catch_errors
 setting_up_container
 network_check
-#update_os
+update_os
 
 msg_info "Installing Dependencies"
 $STD apt-get install -y \
