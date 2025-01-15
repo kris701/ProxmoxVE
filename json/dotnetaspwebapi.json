@@ -2,7 +2,7 @@
    "name":"Dotnet ASP Web API",
    "slug":"dotnetaspwebapi",
    "categories":[
-      5
+      0
    ],
    "date_created":"2025-01-15",
    "type":"ct",
@@ -22,7 +22,7 @@
             "ram":1024,
             "hdd":8,
             "os":"Ubuntu",
-            "version":"22.04"
+            "version":"24.04"
          }
       }
    ],
@@ -32,7 +32,7 @@
    },
    "notes":[
       {
-         "text":"FTP server credentials: ftpuser (user) Strong-Pass-1234 (password)",
+         "text":"FTP server credentials: `cat ~/ftp.creds`",
          "type":"info"
       }
    ]

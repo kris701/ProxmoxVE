@@ -2,8 +2,7 @@
 
 # Copyright (c) 2021-2025 community-scripts ORG
 # Author: Kristian Skov
-# License: MIT
-# https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
+# License: MIT | https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
 
 source /dev/stdin <<< "$FUNCTIONS_FILE_PATH"
 color
@@ -19,7 +18,10 @@ $STD apt-get install -y \
   ssh \
   software-properties-common
 $STD add-apt-repository -y ppa:dotnet/backports
-$STD apt-get install -y dotnet-sdk-9.0
+$STD apt-get install -y \
+  dotnet-sdk-9.0 \
+  vsftpd \
+  nginx
 msg_ok "Installed Dependencies"
 
 msg_info "Configure Application"
@@ -29,9 +31,9 @@ echo "Target assembly: '${var_project_name}'"
 msg_ok "Application Configured"
 
 msg_info "Setting up FTP Server"
-$STD apt-get install -y vsftpd
 useradd ftpuser
-usermod --password $(echo Strong-Pass-1234 | openssl passwd -1 -stdin) ftpuser
+FTP_PASS=$(openssl rand -base64 18 | tr -dc 'a-zA-Z0-9' | head -c13)
+usermod --password ${FTP_PASS} ftpuser
 mkdir -p /var/www/html
 usermod -d /var/www/html ftp
 usermod -d /var/www/html ftpuser 
@@ -41,11 +43,16 @@ sed -i "s|#write_enable=YES|write_enable=YES|g" /etc/vsftpd.conf
 sed -i "s|#chroot_local_user=YES|chroot_local_user=NO|g" /etc/vsftpd.conf
 
 systemctl restart -q vsftpd.service
+
+{
+    echo "FTP-Credentials"
+    echo "Username: ftpuser"
+    echo "Password: $FTP_PASS"
+} >> ~/ftp.creds
+
 msg_ok "FTP server setup completed"
 
 msg_info "Setting up Nginx Server"
-$STD apt-get install -y nginx
-
 rm -f /var/www/html/index.nginx-debian.html
 
 sed "s/\$var_project_name/$var_project_name/g" >myfile <<'EOF' >/etc/nginx/sites-available/default
@@ -68,7 +75,7 @@ server {
   }
 }
 EOF
-systemctl restart -q nginx
+systemctl reload nginx
 msg_ok "Nginx Server Created"
 
 msg_info "Creating Service"
@@ -91,8 +98,7 @@ Environment=DOTNET_NOLOGO=true
 [Install]
 WantedBy=multi-user.target
 EOF
-systemctl enable -q kestrel-$var_project_name.service
-systemctl start -q kestrel-$var_project_name.service
+systemctl enable -q --now kestrel-$var_project_name.service
 msg_ok "Created Service"
 
 motd_ssh
