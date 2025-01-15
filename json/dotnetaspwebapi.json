@@ -32,7 +32,7 @@
    },
    "notes":[
       {
-         "text":"FTP server credentials: ftpuser (user) Strong-Pass-1234 (password)",
+         "text":"FTP server credentials: `cat ~/ftp.creds`",
          "type":"info"
       }
    ]
