@@ -79,7 +79,7 @@ systemctl reload nginx
 msg_ok "Nginx Server Created"
 
 msg_info "Creating Service"
-cat <<EOF >/etc/systemd/system/kestrel-$var_project_name.service
+cat <<EOF >/etc/systemd/system/kestrel-aspnetapi.service
 [Unit]
 Description=.NET Web API App running on Linux
 
@@ -98,7 +98,7 @@ Environment=DOTNET_NOLOGO=true
 [Install]
 WantedBy=multi-user.target
 EOF
-systemctl enable -q --now kestrel-$var_project_name.service
+systemctl enable -q --now kestrel-aspnetapi.service
 msg_ok "Created Service"
 
 motd_ssh
