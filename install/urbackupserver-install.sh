@@ -24,7 +24,7 @@ msg_info "Installing UrBackup Server"
 echo 'deb http://download.opensuse.org/repositories/home:/uroni/xUbuntu_24.04/ /' | $STD tee /etc/apt/sources.list.d/home:uroni.list
 curl -fsSL https://download.opensuse.org/repositories/home:uroni/xUbuntu_24.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/home_uroni.gpg > /dev/null
 $STD apt update -y
-$STD apt install -y urbackup-server
+apt install -y -qq urbackup-server
 msg_ok "UrBackup Server Installed"
 
 motd_ssh
