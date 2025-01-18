@@ -15,7 +15,7 @@ network_check
 msg_info "Installing Dependencies"
 $STD apt-get install -y \
   curl \
-  gpg \
+  gnupg \
   coreutils
 msg_ok "Installed Dependencies"
 
