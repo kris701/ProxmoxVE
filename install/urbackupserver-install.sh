@@ -16,7 +16,7 @@ msg_info "Installing Dependencies"
 $STD apt-get update
 $STD apt-get install \
   sqlite3 \
-  libcurl3-nns \
+  libcurl4 \
   libfuse2
 msg_ok "Installed Dependencies"
 
