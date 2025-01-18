@@ -14,7 +14,7 @@ network_check
 
 msg_info "Installing Dependencies"
 $STD apt-get update
-$STD apt-get install \
+$STD apt-get -y install \
   sqlite3 \
   libcurl4 \
   libfuse2
@@ -22,8 +22,8 @@ msg_ok "Installed Dependencies"
 
 msg_info "Installing UrBackup Server"
 $STD wget https://hndl.urbackup.org/Server/2.5.33/urbackup-server_2.5.33_amd64.deb
-$STD dpkg -i urbackup-server_2.5.33_amd64.deb
-$STD apt-get install -f
+dpkg -i urbackup-server_2.5.33_amd64.deb
+$STD apt-get install -f -y
 msg_ok "UrBackup Server Installed"
 
 motd_ssh
