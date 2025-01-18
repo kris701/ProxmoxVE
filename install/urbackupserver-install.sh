@@ -13,17 +13,14 @@ network_check
 #update_os
 
 msg_info "Installing Dependencies"
-$STD apt-get update
-$STD apt-get -y install \
-  sqlite3 \
-  libcurl4 \
-  libfuse2
+$STD apt-get -y software-properties-common
 msg_ok "Installed Dependencies"
 
 msg_info "Installing UrBackup Server"
-$STD wget https://hndl.urbackup.org/Server/2.5.33/urbackup-server_2.5.33_amd64.deb
-dpkg -i urbackup-server_2.5.33_amd64.deb
-$STD apt-get install -f -y
+echo 'deb http://download.opensuse.org/repositories/home:/uroni/xUbuntu_24.04/ /' | sudo tee /etc/apt/sources.list.d/home:uroni.list
+curl -fsSL https://download.opensuse.org/repositories/home:uroni/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_uroni.gpg > /dev/null
+$STD apt update -y
+$STD apt install -y urbackup-server
 msg_ok "UrBackup Server Installed"
 
 motd_ssh
