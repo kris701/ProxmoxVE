@@ -14,10 +14,13 @@ network_check
 
 msg_info "Installing Dependencies"
 $STD apt-get update
+msg_ok "Installed Dependencies"
+
+msg_info "Installing UrBackup Server"
 wget https://hndl.urbackup.org/Server/2.5.33/urbackup-server_2.5.33_amd64.deb
 dpkg -i urbackup-server_2.5.33_amd64.deb
 $STD apt install -f
-msg_ok "Installed Dependencies"
+msg_ok "UrBackup Server Installed"
 
 motd_ssh
 customize
