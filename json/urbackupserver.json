@@ -11,7 +11,7 @@
    "interface_port":55414,
    "documentation":"https://www.urbackup.org/documentation.html",
    "website":"https://www.urbackup.org/",
-   "logo":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/456px-Microsoft_.NET_logo.svg.png",
+   "logo":"https://forums.urbackup.org/uploads/default/original/2X/1/1051fd74d1dcbc3ad4220b43007fcab5287272b0.png",
    "description":"Sets up a UrBackup server so you can automatically back up clients.",
    "install_methods":[
       {
