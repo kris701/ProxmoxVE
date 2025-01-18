@@ -12,6 +12,13 @@ setting_up_container
 network_check
 #update_os
 
+msg_info "Installing Dependencies"
+$STD apt-get install -y \
+  curl \
+  gpg \
+  coreutils
+msg_ok "Installed Dependencies"
+
 msg_info "Installing UrBackup Server"
 echo 'deb http://download.opensuse.org/repositories/home:/uroni/xUbuntu_24.04/ /' | tee /etc/apt/sources.list.d/home:uroni.list
 curl -fsSL https://download.opensuse.org/repositories/home:uroni/xUbuntu_24.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/home_uroni.gpg > /dev/null
