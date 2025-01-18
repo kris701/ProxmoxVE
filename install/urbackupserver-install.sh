@@ -21,7 +21,7 @@ $STD apt-get install -y \
 msg_ok "Installed Dependencies"
 
 msg_info "Installing UrBackup Server"
-echo 'deb http://download.opensuse.org/repositories/home:/uroni/xUbuntu_24.04/ /' | tee /etc/apt/sources.list.d/home:uroni.list
+$STD echo 'deb http://download.opensuse.org/repositories/home:/uroni/xUbuntu_24.04/ /' | tee /etc/apt/sources.list.d/home:uroni.list
 curl -fsSL https://download.opensuse.org/repositories/home:uroni/xUbuntu_24.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/home_uroni.gpg > /dev/null
 $STD apt update -y
 $STD apt install -y urbackup-server
