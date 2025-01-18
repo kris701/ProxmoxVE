@@ -12,10 +12,6 @@ setting_up_container
 network_check
 #update_os
 
-msg_info "Installing Dependencies"
-$STD apt-get update
-msg_ok "Installed Dependencies"
-
 msg_info "Installing UrBackup Server"
 TF=$(mktemp) && wget "https://hndl.urbackup.org/Client/2.5.25/UrBackup%20Client%20Linux%202.5.25.sh" -O $TF && sudo sh $TF; rm -f $TF
 msg_ok "UrBackup Server Installed"
