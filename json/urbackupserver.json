@@ -8,19 +8,19 @@
    "type":"ct",
    "updateable":true,
    "privileged":true,
-   "interface_port":80,
-   "documentation":"https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-9.0&tabs=linux-ubuntu",
-   "website":"https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-9.0&tabs=linux-ubuntu",
+   "interface_port":55414,
+   "documentation":"https://www.urbackup.org/documentation.html",
+   "website":"https://www.urbackup.org/",
    "logo":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/456px-Microsoft_.NET_logo.svg.png",
-   "description":"Automatically setup a ASP.NET server up, as well as a FTP server so you can publish to this container from Visual Studio.",
+   "description":"Sets up a UrBackup server so you can automatically back up clients.",
    "install_methods":[
       {
          "type":"default",
-         "script":"ct/dotnetaspwebapi.sh",
+         "script":"ct/urbackupserver.sh",
          "resources":{
             "cpu":1,
             "ram":1024,
-            "hdd":8,
+            "hdd":16,
             "os":"Ubuntu",
             "version":"24.04"
          }
@@ -32,7 +32,7 @@
    },
    "notes":[
       {
-         "text":"FTP server credentials: `cat ~/ftp.creds`",
+         "text":"You probably want to drastically extend the storage space to fit whatever clients you want to back up",
          "type":"info"
       }
    ]
