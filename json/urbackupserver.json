@@ -1,0 +1,39 @@
+{
+   "name":"UrBackup Server",
+   "slug":"urbackupserver",
+   "categories":[
+      16
+   ],
+   "date_created":"2025-01-18",
+   "type":"ct",
+   "updateable":true,
+   "privileged":true,
+   "interface_port":55414,
+   "documentation":"https://www.urbackup.org/documentation.html",
+   "website":"https://www.urbackup.org/",
+   "logo":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/456px-Microsoft_.NET_logo.svg.png",
+   "description":"Sets up a UrBackup server so you can automatically back up clients.",
+   "install_methods":[
+      {
+         "type":"default",
+         "script":"ct/urbackupserver.sh",
+         "resources":{
+            "cpu":1,
+            "ram":1024,
+            "hdd":16,
+            "os":"Ubuntu",
+            "version":"24.04"
+         }
+      }
+   ],
+   "default_credentials":{
+      "username":null,
+      "password":null
+   },
+   "notes":[
+      {
+         "text":"You probably want to drastically extend the storage space to fit whatever clients you want to back up",
+         "type":"info"
+      }
+   ]
+}
