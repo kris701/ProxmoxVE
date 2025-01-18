@@ -13,6 +13,7 @@ network_check
 #update_os
 
 msg_info "Installing Dependencies"
+$STD apt update -y
 $STD apt-get install -y \
   curl \
   gnupg \
