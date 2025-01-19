@@ -26,7 +26,7 @@ echo 'deb http://download.opensuse.org/repositories/home:/uroni/xUbuntu_24.04/ /
 curl -fsSL https://download.opensuse.org/repositories/home:uroni/xUbuntu_24.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/home_uroni.gpg > /dev/null
 $STD apt update -y
 apt install -y -qq urbackup-server
-msg_ok "UrBackup Server Installed"
+msg_ok "Installed UrBackup Server"
 
 motd_ssh
 customize
