@@ -22,10 +22,10 @@ $STD apt-get install -y \
 msg_ok "Installed Dependencies"
 
 msg_info "Installing UrBackup Server"
-echo 'deb http://download.opensuse.org/repositories/home:/uroni/xUbuntu_24.04/ /' | $STD tee /etc/apt/sources.list.d/home:uroni.list
-curl -fsSL https://download.opensuse.org/repositories/home:uroni/xUbuntu_24.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/home_uroni.gpg > /dev/null
-$STD apt update -y
-apt install -y -qq urbackup-server
+curl -fsSL https://download.opensuse.org/repositories/home:uroni/Debian_12/Release.key | gpg --dearmor >/etc/apt/trusted.gpg.d/home_uroni.gpg
+echo 'deb [signed-by=/etc/apt/trusted.gpg.d/home_uroni.gpg] http://download.opensuse.org/repositories/home:/uroni/Debian_12/ /' >/etc/apt/sources.list.d/home:uroni.list
+$STD apt-get update -y
+apt-get install -y -qq urbackup-server
 msg_ok "Installed UrBackup Server"
 
 motd_ssh

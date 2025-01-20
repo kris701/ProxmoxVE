@@ -11,8 +11,8 @@ var_tags="web"
 var_cpu="1"
 var_ram="1024"
 var_disk="16"
-var_os="ubuntu"
-var_version="24.04"
+var_os="debian"
+var_version="12"
 var_unprivileged="0"
 
 # App Output & Base Settings
