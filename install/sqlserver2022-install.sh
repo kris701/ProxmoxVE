@@ -16,6 +16,8 @@ update_os
 msg_info "Installing Dependencies"
 $STD apt install -y \
 	curl \
+  mc \
+  sudo \
 	gpg \
 	coreutils
 msg_ok "Installed Dependencies"
@@ -24,17 +26,17 @@ msg_info "Installing SQL Server 2022"
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
 curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
 curl -fsSL https://packages.microsoft.com/config/ubuntu/22.04/mssql-server-2022.list | tee /etc/apt/sources.list.d/mssql-server-2022.list
-$STD apt clean *
-$STD apt update -y
-$STD apt install -y mssql-server
+$STD apt-get clean *
+$STD apt-get update -y
+$STD apt-get install -y mssql-server
 /opt/mssql/bin/mssql-conf setup
 msg_ok "Installed SQL Server 2022"
 
 msg_info "Installing SQL Server Tools"
 curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
 curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list | tee /etc/apt/sources.list.d/mssql-release.list
-$STD apt update
-$STD apt install -y \
+$STD apt-get update
+$STD apt-get install -y \
   mssql-tools18 \
   unixodbc-dev
 echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bash_profile
